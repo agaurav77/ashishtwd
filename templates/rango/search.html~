@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% load rango_extras %}
+
+{% block head_content %}
+<title>Rango | Search</title>
+{% endblock %}
+
+{% block body_content %}
+<div class="hero-unit">
+	<h1>Search with Rango</h1><br>
+	<div class="container-fluid">
+		<form class="form-signin span8" id="user_form" method="POST" action="/rango/search/">
+			{% csrf_token %}
+			<input type="text" size="50" name="query" value="" id="query">
+			<button class="btn btn-primary" type="submit" name="submit">Search</button><br>
+		</form>
+		{% if result_list %}
+		<div style="clear:both;">
+			<ol>
+				{% for result in result_list %}
+				<li><b><a href="{{ result.link }}">{{ result.title }}</a></b><br>
+				{% endfor %}
+			</ol>
+		</div>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

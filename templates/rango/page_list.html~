@@ -1,0 +1,11 @@
+{% load static %}
+{% load rango_extras %}
+{% if pages %}
+<ul>		
+	{% for page in pages %}
+	<li><a href="/rango/goto/?page_id={{page.id}}">{{ page.title }}</a>
+	{% endfor %}
+</ul>
+{% else %}
+<b>This category has been created, but no pages exist.</b><br>
+{% endif %}

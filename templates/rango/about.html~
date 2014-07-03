@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load static %}
+{% load rango_extras %}
+
+{% block head_content %}
+<title>Rango | About </title>
+{% endblock %}
+
+{% block body_content %}
+<div class="hero-unit">	
+	<h2> About Rango </h2>
+	<p>{{ aboutmessage }}</p><br>
+	<h2>Credits</h2>
+	{% for pic in pics %}
+	<img id="about_pic" src="{{ pic.1 }}" alt="{{ pic.0 }}" style="height:150px;width:150px;"></img>
+	{% endfor %}
+	<br><br><br>
+	<h2>Some Statistics</h2>
+	You visited this site {% if count == 1 %}1 time.{% else %}{{ count }} times.{% endif %}
+</div>
+{% endblock %}		

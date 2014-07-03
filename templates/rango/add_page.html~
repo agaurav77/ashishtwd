@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+{% load rango_extras %}
+
+{% block head_content %}
+<title>Rango | Add A Category</title>
+{% endblock %}
+
+{% block body_content %}
+<div class="hero-unit">
+	{% if user.is_authenticated %}
+	<h1>Add A Page</h1><br>
+	<div class="container">
+		<form class="span6" id="page_form" method="POST" action="/rango/category/{{ category_url }}/add_page/">
+			{% csrf_token %}
+			{% for hidden in form.hidden_fields %}
+				{{ hidden }}
+			{% endfor %}
+			{% for field in form.visible_fields %}
+				{% if field.errors %}
+					<div id="error">{{field.errors}}</div>
+				{% endif %}		
+				{{ field.help_text }}
+				{{ field }}<br>
+			{% endfor %}
+		<button class="btn btn-primary" type="submit" name="submit">Create Page</button>
+		</form>
+	</div>
+	{% else %}
+	<h2>Please log in to continue.</h2>
+	{% endif %}
+</div>
+{% endblock %}

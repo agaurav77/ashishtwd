@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load static %}
+{% load rango_extras %}
+
+{% block head_content %}
+{% if user.is_authenticated %}
+<title>Rango | {{ user.username }}</title>
+{% else %}
+<title>Rango | Error</title>
+{% endif %}
+{% endblock %}
+
+{% block body_content %}
+<div class="hero-unit">
+	<div class="container">
+		{% if user.is_authenticated %}
+		<h1>Profile</h1><br>
+		{% if user.profile.picture %}
+		<img src="{{ user.profile.picture.url }}" style="float:left;height:300px;width:auto;border:1px #999 solid;" />
+		{% endif %}
+		<h3>&nbsp;&nbsp;&nbsp;&nbsp;Username</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ user.username }}<br>
+		<h3>&nbsp;&nbsp;&nbsp;&nbsp;Password</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;********<br>
+		<h3>&nbsp;&nbsp;&nbsp;&nbsp;Website</h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{user.profile.website}}<br>
+		{% else %}
+		<b>Please log in to see this page.</b>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

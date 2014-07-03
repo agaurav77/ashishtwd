@@ -1,0 +1,14 @@
+{% load static %}
+{% load rango_extras %}
+{% if not error and cat_list %}
+<ul class="nav nav-list">
+    {% for category in cat_list %}
+	<li><a href="/rango/category/{{ category.name|auto_code }}/">{{ category.name }}</a> 
+	{% endfor %}
+</ul>
+{% endif %}
+{% if error and not cat_list %}
+<ul class="nav nav-list">
+	<li>No categories found.
+</ul>
+{% endif %}

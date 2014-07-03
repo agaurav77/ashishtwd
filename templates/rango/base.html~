@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+{% load static %}
+{% load rango_extras %}
+<html>
+	<head>
+	{% block head_content %}{% endblock %}
+	</head>
+	<body>
+	{% block body_content %}{% endblock %}
+	</body>
+</html>
+
